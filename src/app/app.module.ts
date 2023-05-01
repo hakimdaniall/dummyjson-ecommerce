@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-
-// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductsComponent } from './pages/products/products.component';
@@ -26,7 +24,6 @@ import { AuthGuard } from './guards/auth.guard';
   imports: [
     CommonModule,
     BrowserModule,
-    // AppRoutingModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([

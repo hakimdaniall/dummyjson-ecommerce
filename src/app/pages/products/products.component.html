@@ -1,5 +1,4 @@
 <div *ngIf="paginatedProducts">
-
     <div class="searchform cf">
         <input type="text" placeholder="Search products" [(ngModel)]="searchQuery" (input)="updateSearchQuery($event)">
         <button class="searchButton" (click)="onSearch()" type="button">Search</button>
@@ -49,11 +48,12 @@
             Prev
         </button>
         <div class="pagination-page">
-            <span class="active">{{ currentPage }} </span>
-            <span>of </span>
+            <span class="active">{{ currentPage }}</span>
+            <span>of</span>
             <span>{{ totalPages }}</span>
         </div>
         <button class="pagination-cta" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
             Next
         </button>
     </div>
+</div>
