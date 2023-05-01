@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { SiteHeaderComponent } from './components/site-header/site-header.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { SiteHeaderComponent } from './components/site-header/site-header.compon
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'product-details/:id', component: ProductDetailsComponent },
+      { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+      { path: 'product-details/:id', component: ProductDetailsComponent, canActivate: [AuthGuard] },
     ]),
   ],
   bootstrap: [AppComponent]
