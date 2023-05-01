@@ -57,7 +57,7 @@ h1 {
   position: relative;
   display: block;
   width: 100%;
-  background: #95a6d6;
+  background: #ff7d1a;
   padding: 10px 0;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -163,7 +163,7 @@ tr.extracosts {
 
 /** submit btn **/
 tr.checkoutrow {
-  background: #cfdae8;
+  background: rgba(244,244,244,.79);
   border-top: 1px solid #abc0db;
   border-bottom: 1px solid #abc0db;
 }
@@ -183,8 +183,8 @@ td.checkout {
 }
 
 #submitbtn {
-  width: 150px;
-  height: 35px;
+  font-family: inherit;
+  padding: 10px;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -195,14 +195,10 @@ td.checkout {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
   cursor: pointer;
   overflow: hidden;
-  border-bottom: 1px solid #0071ff;
-  background-image: linear-gradient(#66aaff, #4d9cff);
+  background:  #ff7d1a;
+  transition: all 0.4s ease;
 }
+
 #submitbtn:hover {
-  background-image: linear-gradient(#4d9cff, #338eff);
-}
-#submitbtn:active {
-  border-bottom: 0;
-  background-image: linear-gradient(#338eff, #4d9cff);
-  box-shadow: inset 0 1px 3px 1px rgba(0,0,0,0.25);
+  opacity: .5;
 }
