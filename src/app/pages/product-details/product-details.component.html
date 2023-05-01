@@ -1,0 +1,101 @@
+<main class="main__container">
+    <section class="slider" *ngIf="data">
+        <button class="slider-btn--container previous" type="button"
+            aria-label="button to previous image on focus section">
+            <img class="slider-btn previous" src="assets/images/icon-previous.svg" alt="">
+        </button>
+
+        <div class="slider__img--container">
+            <img class="slider__img" [src]="currentImage ? currentImage  : data.images[0]" alt="">
+        </div>
+
+        <button class="slider-btn--container next" type="button" aria-label="button to next image on focus section"
+            (click)="onNext()">
+            <img class=" slider-btn next" src="assets/images/icon-next.svg" alt="">
+        </button>
+
+        <div class="slider__selector--container">
+            <button *ngFor="let item of data.images.slice(0,4)" class="slider__selector--img" type="button"
+                aria-label="button for select product image" (click)="updateCurrentImage(item)">
+                <img [src]="item" alt="">
+            </button>
+        </div>
+    </section>
+
+    <section class="slider-focus" *ngIf="data">
+        <button class="close-icon" type="button" aria-label="close focus section">
+            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                    fill-rule="evenodd" />
+            </svg>
+        </button>
+
+        <button class="slider-btn--container previous focus-previous" type="button"
+            aria-label="button to previous image on focus section">
+            <svg class="slider-btn focus-previous--img" width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 1 3 9l8 8" stroke-width="3" fill="none" fill-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div class="slider__img--container slider__focus--img">
+            <img [src]="data.images[0]" alt="">
+        </div>
+
+        <button class="slider-btn--container focus-next" type="button"
+            aria-label="button to next image on focus section">
+            <svg class="slider-btn focus-next--img" width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m2 1 8 8-8 8" stroke-width="3" fill="none" fill-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div class="slider__selector--container">
+            <button class="slider__selector--focus-img" type="button"
+                aria-label="button for select product image on focus section">
+                <img src="assets/images/image-product-1-thumbnail.jpg" alt=""></button>
+            <button class="slider__selector--focus-img" type="button"
+                aria-label="button for select product image on focus section">
+                <img src="assets/images/image-product-2-thumbnail.jpg" alt=""></button>
+            <button class="slider__selector--focus-img" type="button"
+                aria-label="button for select product image on focus section">
+                <img src="assets/images/image-product-3-thumbnail.jpg" alt=""></button>
+            <button class="slider__selector--focus-img" type="button"
+                aria-label="button for select product image on focus section">
+                <img src="assets/images/image-product-4-thumbnail.jpg" alt=""></button>
+        </div>
+    </section>
+
+    <section class="product-content">
+        <article class="product-content--info" *ngIf="data">
+            <div class="product__info--text">
+                <p class="product__info--brand">{{ data.brand }}</p>
+                <h2 class="product__info--title">{{ data.title }}</h2>
+                <p class="product__info--description">{{ data.description }}</p>
+            </div>
+
+            <div class="info__pricing">
+                <span class="info__pricing--price">${{ data.price }}</span>
+                <span class="info__pricing--discount">{{ data.discountPercentage |number: '1.0-0' }}%</span>
+                <span class="info__pricing--before">
+                    <div>${{ data.price / (1 - (data.discountPercentage/100)) | number: '1.2-2'}}</div>
+                </span>
+            </div>
+        </article>
+
+        <div class="product-content__order">
+            <div class="order__quantity">
+                <input class="order__quantity--input" type="number" value="0" name="quantity" #quantityInput>
+                <button class="order__quantity--btn minus" type="button" aria-label="button for remove quantity product"
+                    (click)="decreaseQuantity(quantityInput)"><img src="assets/images/icon-minus.svg" alt=""></button>
+                <button class="order__quantity--btn plus" type="button" aria-label="button for add quantity product"
+                    (click)="increaseQuantity(quantityInput)"><img src="assets/images/icon-plus.svg" alt=""></button>
+
+            </div>
+
+            <button class="order__cart" type="button" (click)="addToCart(data)">
+                <img class="order__cart--icon" src="assets/images/icon-cart-white.svg" alt="">
+                Add to cart
+            </button>
+        </div>
+    </section>
+</main>

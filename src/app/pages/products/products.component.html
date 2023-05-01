@@ -1,0 +1,59 @@
+<div *ngIf="paginatedProducts">
+
+    <div class="searchform cf">
+        <input type="text" placeholder="Search products" [(ngModel)]="searchQuery" (input)="updateSearchQuery($event)">
+        <button class="searchButton" (click)="onSearch()" type="button">Search</button>
+        <button class="clearForm" (click)="clearSearch()">Clear</button>
+    </div>
+
+    <div class="product" *ngIf="paginatedProducts">
+        <div class="product-details" *ngFor="let item of paginatedProducts">
+            <div class="product-image">
+                <img [src]="item.thumbnail" alt="Product 1" />
+            </div>
+
+            <h2 class="product-name">{{ item.title }}</h2>
+            <p class="product-price">
+                Quantity: {{ item.stock ? item.stock : 'Out of stock' }}
+            </p>
+            <button (click)="addToCart(item)" [disabled]="item.stock === 0" class="order__cart mb-20">
+                Add to Cart
+            </button>
+            <button class="view-details" (click)="goToProductDetails(item.id)">View Details</button>
+        </div>
+        <div class="box" *ngIf="paginatedProducts.length == 0">
+            <div class="loader-bad">
+                <div class="icon search">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <div class="icon bad">
+                    <svg viewBox="-394 266 30 30">
+                        <line fill="none" stroke-width="3" x1="-372.1" y1="270.3" x2="-372.1" y2="275.8" />
+                        <line fill="none" stroke-width="3" x1="-385.9" y1="270.3" x2="-385.9" y2="275.8" />
+                        <path fill="none" stroke-width="3"
+                            d="M-367.1,290.6c0,0-3.6-5.6-11.9-5.6c-8.2,0-12.1,5.6-12.1,5.6" />
+                    </svg>
+                </div>
+            </div>
+            <h3 class="no-product-header">Opss... No Products Found</h3>
+            <p class="no-product-para"> Your search did not match any products. Please try again.</p>
+        </div>
+    </div>
+
+
+    <div class="pagination" *ngIf="paginatedProducts.length !== 0">
+        <button class="pagination-cta" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+            Prev
+        </button>
+        <div class="pagination-page">
+            <span class="active">{{ currentPage }} </span>
+            <span>of </span>
+            <span>{{ totalPages }}</span>
+        </div>
+        <button class="pagination-cta" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+            Next
+        </button>
+    </div>

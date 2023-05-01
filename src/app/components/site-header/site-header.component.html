@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="header__primary-content">
+        <img class="menu-icon" src="assets/images/icon-menu.svg" alt="">
+        <a href="#" class="logo" aria-label="header logo button to main section">
+            <img src="assets/images/JSON.png" width="125px" height="41px" aria-hidden="true"></a>
+    </div>
+
+    <div class="header__list--container">
+        <ul class="header__menu--list">
+            <li class="header__menu--item"><a href="#">Collections</a></li>
+            <li class="header__menu--item"><a href="#">Men</a></li>
+            <li class="header__menu--item"><a href="#">Women</a></li>
+            <li class="header__menu--item"><a href="#">About</a></li>
+            <li class="header__menu--item"><a href="#">Contact</a></li>
+        </ul>
+
+        <ul class="header__secondary--list">
+            <li class="header__cart-icon" (click)="isOpen = !isOpen">
+                <span class="cart-icon--quantity empty"></span>
+                <img src="assets/images/icon-cart.svg" alt="">
+            </li>
+            <li class="header__profile"><img src="assets/images/image-avatar.png" alt=""></li>
+        </ul>
+    </div>
+</header>
+<app-cart *ngIf="isOpen" [isOpen]="isOpen"></app-cart>
