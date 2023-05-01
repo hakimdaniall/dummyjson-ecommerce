@@ -68,15 +68,6 @@
         </article>
 
         <div class="product-content__order">
-            <div class="order__quantity">
-                <input class="order__quantity--input" type="number" value="0" name="quantity" #quantityInput>
-                <button class="order__quantity--btn minus" type="button" aria-label="button for remove quantity product"
-                    (click)="decreaseQuantity(quantityInput)"><img src="assets/images/icon-minus.svg" alt=""></button>
-                <button class="order__quantity--btn plus" type="button" aria-label="button for add quantity product"
-                    (click)="increaseQuantity(quantityInput)"><img src="assets/images/icon-plus.svg" alt=""></button>
-
-            </div>
-
             <button class="order__cart" type="button" (click)="addToCart(data)">
                 <img class="order__cart--icon" src="assets/images/icon-cart-white.svg" alt="">
                 Add to cart
