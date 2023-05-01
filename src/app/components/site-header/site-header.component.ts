@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddToCartService } from 'src/app/services/add-to-cart.service';
 
 @Component({
   selector: 'app-site-header',
@@ -8,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class SiteHeaderComponent implements OnInit {
 
   isOpen = false;
+  cartQuantity: number = 0;
 
-  constructor() { }
+  constructor(private cartService: AddToCartService) {
+    this.cartService.cartQuantity$.subscribe(quantity => {
+      this.cartQuantity = quantity;
+    });
+  }
 
   ngOnInit(): void {
   }

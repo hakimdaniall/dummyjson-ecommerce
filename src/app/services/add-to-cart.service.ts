@@ -10,6 +10,8 @@ export class AddToCartService {
   public cartItems$ = this.cartItemsSubject.asObservable();
   private totalSubject = new BehaviorSubject<number>(0);
   public total$ = this.totalSubject.asObservable();
+  private cartQuantity = new BehaviorSubject<number>(0);
+  public cartQuantity$ = this.cartQuantity.asObservable();
 
   constructor() { }
 
@@ -24,7 +26,8 @@ export class AddToCartService {
     }
 
     this.cartItemsSubject.next(currentItems);
-    this.calculateTotal(currentItems)
+    this.calculateTotal(currentItems);
+    this.getCartQuantity();
   }
 
   reduceItem(product: any) {
@@ -40,6 +43,7 @@ export class AddToCartService {
       this.cartItemsSubject.next(currentItems);
     }
     this.calculateTotal(currentItems)
+    this.getCartQuantity();
   }
 
   clearCart() {
@@ -69,6 +73,16 @@ export class AddToCartService {
       this.cartItemsSubject.next(currentItems);
     }
     this.calculateTotal(currentItems)
+    this.getCartQuantity();
+  }
+
+  getCartQuantity() {
+    const currentItems = this.cartItemsSubject.getValue();
+    let quantity = 0;
+    for (let item of currentItems) {
+      quantity += item.quantity;
+    }
+    this.cartQuantity.next(quantity);
   }
 
 }

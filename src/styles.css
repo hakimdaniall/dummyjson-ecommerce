@@ -123,10 +123,6 @@ ul {
     position: relative;
 }
 
-.cart-icon--quantity.empty {
-    display: none;
-}
-
 .cart-icon--quantity {
     width: 16px;
     position: absolute;
