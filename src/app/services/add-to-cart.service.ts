@@ -25,7 +25,6 @@ export class AddToCartService {
 
     this.cartItemsSubject.next(currentItems);
     this.calculateTotal(currentItems)
-    console.log('curr item is', currentItems)
   }
 
   reduceItem(product: any) {
@@ -40,6 +39,7 @@ export class AddToCartService {
       }
       this.cartItemsSubject.next(currentItems);
     }
+    this.calculateTotal(currentItems)
   }
 
   clearCart() {
@@ -68,6 +68,7 @@ export class AddToCartService {
       currentItems.splice(itemIndex, 1);
       this.cartItemsSubject.next(currentItems);
     }
+    this.calculateTotal(currentItems)
   }
 
 }
